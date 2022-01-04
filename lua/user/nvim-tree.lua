@@ -24,6 +24,7 @@ vim.g.nvim_tree_indent_markers = 1 --0 by default, this option shows indent mark
 vim.g.nvim_tree_highlight_opened_files = 3 --0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_add_trailing = 1; --0 by default, append a trailing slash to folder names
 vim.g.nvim_tree_group_empty = 1; --0 by default, compact folders that only contain a single folder into one node in the file tree
+vim.g.nvim_tree_root_folder_modifier = ':t'; --TODO find a modifier that looks better
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -76,7 +77,6 @@ nvim_tree.setup {
   view = {
     width = 30,
     height = 30,
-    hide_root_folder = false,
     side = "left",
     auto_resize = true,
     mappings = {

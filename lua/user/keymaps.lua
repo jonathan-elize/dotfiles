@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -78,3 +76,7 @@ keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
 --Format
 keymap("n", "<leader>fd", ":Format<cr>", opts)
+
+--TODO find a way to make resize faster/dynamic
+--Nerdtree
+keymap("n", "<leader>rt", ":NvimTreeResize 50<CR>", opts)

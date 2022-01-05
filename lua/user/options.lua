@@ -11,6 +11,7 @@ local options = {
 	updatetime=300,
 	pumheight=10,
 	termguicolors=true,
+	showmode=false,
 }
 
 for k, v in pairs(options) do

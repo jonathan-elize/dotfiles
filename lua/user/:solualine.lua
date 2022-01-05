@@ -27,6 +27,7 @@ local encoding = {
 local fileformat = {
 	"fileformat",
 	fmt = function() return "" end,
+	padding = 10
 }
 
 lualine.setup({

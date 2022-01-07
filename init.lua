@@ -14,6 +14,7 @@ require "user.bufferline"
 require "user.toggleterm"
 require "user.project"
 require "user.alpha"
+require "user.whichkey"
 vim.cmd [[
 	"set highlight SignColumn guibg=bg_panel
 ]]

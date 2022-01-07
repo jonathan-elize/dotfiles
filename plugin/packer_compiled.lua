@@ -194,11 +194,6 @@ _G.packer_plugins = {
     path = "/Users/jonathanelize/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  ["project.nvim"] = {
-    loaded = true,
-    path = "/Users/jonathanelize/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
-  },
   ["telescope-fzf-native.nvim"] = {
     loaded = false,
     needs_bufread = false,

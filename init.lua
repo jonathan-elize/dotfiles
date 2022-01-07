@@ -11,6 +11,7 @@ require "user.comment"
 require "user.gitsigns"
 require "user.nvim-tree"
 require "user.bufferline"
+require "user.toggleterm"
 vim.cmd [[
 	"set highlight SignColumn guibg=bg_panel
 ]]

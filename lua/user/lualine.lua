@@ -31,7 +31,7 @@ local fileformat = {
 
 lualine.setup({
 	options = {
-		disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+			disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 	},
 	sections = {
 		lualine_a = { "mode", branch, },

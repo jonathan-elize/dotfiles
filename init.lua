@@ -13,6 +13,7 @@ require "user.nvim-tree"
 require "user.bufferline"
 require "user.toggleterm"
 require "user.project"
+require "user.alpha"
 vim.cmd [[
 	"set highlight SignColumn guibg=bg_panel
 ]]

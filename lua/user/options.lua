@@ -12,7 +12,7 @@ local options = {
 	pumheight=10,
 	termguicolors=true,
 	showmode=false,
-	timeoutlen=100,
+	timeoutlen=500,
 }
 
 for k, v in pairs(options) do

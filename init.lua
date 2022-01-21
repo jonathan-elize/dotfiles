@@ -18,3 +18,4 @@ require "user.whichkey"
 vim.cmd [[
 	"set highlight SignColumn guibg=bg_panel
 ]]
+-- TODO make lsp rename blank to start

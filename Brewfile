@@ -4,6 +4,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "jesseduffield/lazygit"
 tap "romkatv/powerlevel10k"
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 brew "fd"
 brew "git"
 brew "maven"

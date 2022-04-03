@@ -1,7 +1,5 @@
 local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-  return
-end
+
 --TODO find a way to add padding to the tabs, theyr're too squished
 
 --TODO find a way to set bufferline at bottom

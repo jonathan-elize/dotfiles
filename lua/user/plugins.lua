@@ -120,6 +120,9 @@ return packer.startup(function(use)
 	--whichkey
 	use "folke/which-key.nvim"
 
+	--debugger
+	use 'puremourning/vimspector'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

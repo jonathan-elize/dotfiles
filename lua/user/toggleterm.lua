@@ -1,7 +1,5 @@
 local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-	return
-end
+
 --TODO learn how to open more than one terminal
 
 toggleterm.setup({

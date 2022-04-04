@@ -75,6 +75,8 @@ return packer.startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+	use 'mfussenegger/nvim-dap'
+	use 'mfussenegger/nvim-jdtls'
 
 	--TreeSitter
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -119,9 +121,6 @@ return packer.startup(function(use)
 
 	--whichkey
 	use "folke/which-key.nvim"
-
-	--debugger
-	use 'puremourning/vimspector'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,20 +1,15 @@
-local options = {
-	number = true,
-	relativenumber = true,
-	tabstop=2,
-	softtabstop=2,
-	shiftwidth=2,
-	scrolloff=8,
-	colorcolumn="80",
-	signcolumn="auto",
-	mouse="a",
-	updatetime=300,
-	pumheight=10,
-	termguicolors=true,
-	showmode=false,
-	timeoutlen=500,
-}
-
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.scrolloff = 8
+vim.opt.colorcolumn = "80"
+vim.opt.signcolumn = "auto"
+vim.opt.mouse = "a"
+vim.opt.updatetime = 300
+vim.opt.pumheight = 10
+vim.opt.termguicolors = true
+vim.opt.showmode = false
+vim.opt.timeoutlen = 500
+vim.opt.cmdheight = 5

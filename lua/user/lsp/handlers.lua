@@ -89,14 +89,14 @@ end
 
 --This runs for each client as they are attached
 M.on_attach = function(client, bufnr)
-		print(client.name)
+	print(client.name)
 	--Stop tsserver from formatting so we can use null-ls instead
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 	end
 	--if the client has document formatting go ahead and make it format on save
 	if client.resolved_capabilities.document_formatting then
-		print('hey this formats')
+		print("hey this formats")
 		vim.cmd([[
 				augroup LspFormatting
 						autocmd! * <buffer>

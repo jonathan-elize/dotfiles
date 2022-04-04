@@ -23,23 +23,25 @@ local encoding = {
 
 local fileformat = {
 	"fileformat",
-	fmt = function() return "" end,
+	fmt = function()
+		return ""
+	end,
 }
 
 lualine.setup({
 	options = {
-			disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 	},
 	sections = {
-		lualine_a = { "mode", branch, },
+		lualine_a = { "mode", branch },
 		lualine_b = { diagnostics },
 		lualine_c = { "buffers" },
-		lualine_x = { encoding, },
+		lualine_x = { encoding },
 		lualine_y = { fileformat },
-		lualine_z = { "location"},
+		lualine_z = { "location" },
 	},
 	inactive_sections = {
-		lualine_a = { "mode", {"filename", file_status = false},  },
+		lualine_a = { "mode", { "filename", file_status = false } },
 		lualine_b = {},
 		lualine_c = {},
 		lualine_x = {},

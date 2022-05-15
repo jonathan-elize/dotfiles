@@ -12,4 +12,4 @@ vim.opt.pumheight = 10
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.timeoutlen = 500
-vim.opt.cmdheight = 5
+vim.opt.nuw = 6

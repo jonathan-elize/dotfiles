@@ -13,17 +13,23 @@ null_ls.setup({
 		formatting.stylua,
 		diagnostics.yamllint,
 		diagnostics.eslint,
-		code_actions.eslint,
+		-- code_actions.eslint,
 	},
-	--null-ls is not setup by nvim-lsp, so has to be done here
-	on_attach = function(client)
-		if client.resolved_capabilities.document_formatting then
-			vim.cmd([[
-					augroup LspFormatting
-							autocmd! * <buffer>
-							autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-					augroup END
-					]])
-		end
+	-- you can reuse a shared lspconfig on_attach callback here
+	on_attach = function(client, bufnr)
+		print(client.supports_method("textDocument/formatting"))
+			if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+									print(client.name)
+									-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+									vim.lsp.buf.format({ bufnr = bufnr })
+							end,
+					})
+			end
 	end,
 })
+vim.lsp.buf.format({ timeout_ms = 5000 })

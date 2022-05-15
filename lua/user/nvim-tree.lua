@@ -19,8 +19,7 @@ vim.g.nvim_tree_icons = {
 		symlink = "",
 	},
 }
-vim.g.nvim_tree_quit_on_open = 1 --0 by default, closes the tree when you open a file
-vim.g.nvim_tree_indent_markers = 0 --0 by default, this option shows indent markers when folders are open
+vim.g.nvim_tree_git_hl = 1 --0 by default, will enable file highlight for git attributes (can be used without the icons).
 vim.g.nvim_tree_highlight_opened_files = 3 --0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_add_trailing = 1 --0 by default, append a trailing slash to folder names
 vim.g.nvim_tree_group_empty = 1 --0 by default, compact folders that only contain a single folder into one node in the file tree
@@ -54,14 +53,9 @@ nvim_tree.setup({
 		"dashboard",
 		"alpha",
 	},
-	auto_close = true,
 	open_on_tab = false,
 	hijack_cursor = false,
 	update_cwd = true,
-	update_to_buf_dir = {
-		enable = true,
-		auto_open = true,
-	},
 	diagnostics = {
 		enable = true,
 		icons = {
@@ -81,11 +75,15 @@ nvim_tree.setup({
 		ignore = true,
 		timeout = 500,
 	},
+	actions = {
+		open_file = {
+			resize_window = true,
+		},
+	},
 	view = {
 		width = 30,
 		height = 30,
 		side = "left",
-		auto_resize = true,
 		mappings = {
 			custom_only = false,
 			list = {
@@ -97,8 +95,4 @@ nvim_tree.setup({
 		number = false,
 		relativenumber = true,
 	},
-	quit_on_open = 0,
-	git_hl = 1,
-	disable_window_picker = 0,
-	root_folder_modifier = ":t",
 })

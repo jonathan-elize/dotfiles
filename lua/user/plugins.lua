@@ -50,13 +50,17 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", opt = true },
+			--{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", opt = true },
 		},
 	})
 	use("nvim-telescope/telescope-media-files.nvim")
 
 	--theme
 	use("EdenEast/nightfox.nvim")
+	use("arcticicestudio/nord-vim")
+	use("sainnhe/everforest")
+	use("ayu-theme/ayu-vim")
+	use("lighthaus-theme/vim-lighthaus")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -77,6 +81,10 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-jdtls")
+	use ({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 
 	--TreeSitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

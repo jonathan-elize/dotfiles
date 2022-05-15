@@ -46,7 +46,7 @@ end
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.supports_method("textDocument/documentHighlight") then
 		vim.api.nvim_exec(
 			[[
       augroup lsp_document_highlight
@@ -66,7 +66,8 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.format({ bufnr = bufnr })<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>autocmd! LspFormatting<CR>", opts) --seems not to be working
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -87,23 +88,34 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 --This runs for each client as they are attached
+local lsp_formatting = function(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+					group = augroup,
+					buffer = bufnr,
+					callback = function()
+						vim.lsp.buf.format({
+								filter = function(clients)
+										-- filter out clients that you don't want to use
+										return vim.tbl_filter(function(client)
+												return client.name ~= "tsserver"
+										end, clients)
+								end,
+								bufnr = bufnr,
+						})
+					end,
+			})
+	end
+end
+
+-- add to your shared on_attach callback
 M.on_attach = function(client, bufnr)
-	print(client.name)
-	--Stop tsserver from formatting so we can use null-ls instead
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
-	--if the client has document formatting go ahead and make it format on save
-	if client.resolved_capabilities.document_formatting then
-		print("hey this formats")
-		vim.cmd([[
-				augroup LspFormatting
-						autocmd! * <buffer>
-						autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-				augroup END
-				]])
-	end
+	lsp_formatting(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end

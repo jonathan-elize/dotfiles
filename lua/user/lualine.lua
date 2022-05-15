@@ -35,7 +35,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { "mode", branch },
 		lualine_b = { diagnostics },
-		lualine_c = { "buffers" },
+		lualine_c = { "filename" },
 		lualine_x = { encoding },
 		lualine_y = { fileformat },
 		lualine_z = { "location" },
